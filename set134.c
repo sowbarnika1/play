@@ -1,24 +1,27 @@
 #include<stdio.h>
 int main()
 {
-    int n,a[100000],i,j,m,g;
+    int n,a[100000],i,j,c=0;
     scanf("%d",&n);
     for(i=0;i<n;i++)
     {
         scanf("%d",&a[i]);
     }
-    m=a[0];
-    for(i=0;i<n-1;i++)
+    for(i=1;;i++)
     {
-        for(j=1;j<=m && j<=a[i+1];j++)
+        c=0;
+        for(j=0;j<n;j++)
         {
-            if(m%j==0 && a[i+1]%j==0)
+            if(i%a[j]==0)
             {
-                g=j;
+                c++;
             }
         }
-        m=(m*a[i+1])/g;
+        if(c==n)
+        {
+            printf("%d",i);
+            break;
+        }
     }
-    printf("%d",m);
     return 0;
 }
