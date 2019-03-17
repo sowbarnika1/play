@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char a[1000],b[100],s[100];
+    int i,k=0,l,c=0,j=0,t,m;
+    for(i=0;i<100;i++)
+    {
+        s[i]='\0';
+    }
+    gets(a);
+    scanf("%s",b);
+    m=strlen(a);
+    l=strlen(b);
+    for(i=0;i<m;i++)
+    {
+        if(a[i]!=' ')
+        {
+            s[k]=a[i];
+            k++;
+        }
+        if(a[i]==' ')
+        {
+            for(j=0;j<k;j++)
+            {
+                if(s[j]==b[j])
+                {
+                    c++;
+                }
+            }
+
+            if(c==l)
+            {
+                while(c>0)
+                {
+                    a[i-1]='$';
+                    i--;
+                    c--;
+                }
+                puts(a);
+            }
+            else
+            {
+                for(j=0;j<k;j++)
+                {
+                    s[j]='\0';
+                }
+                k=0;
+                c=0;
+            }
+        }
+    for(j=0;j<k;j++)
+    {
+        if(s[j]==b[j])
+        {
+        c++;
+        }
+    }
+    if(c==l)
+    {
+        while(c<0)
+        {
+            a[i]='$';
+            i--;
+            c--;
+        }
+    }
+}
+    k=0;
+    for(i=0;i<m;i++)
+    {
+        if(a[i]!='$')
+        {
+            a[k]=a[i];
+            k++;
+        }
+    }
+    puts(a);
+}
