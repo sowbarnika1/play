@@ -23,9 +23,6 @@ int main()
         }
             
     }
-    for(k=j-1;k>=0;k--)
-            {
-                printf("%c",b[k]);
-            }
+    return 0;
         
 }
