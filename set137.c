@@ -2,78 +2,51 @@
 #include<string.h>
 int main()
 {
-    char a[1000],b[100],s[100];
-    int i,k=0,l,c=0,j=0,t,m;
-    for(i=0;i<100;i++)
-    {
-        s[i]='\0';
-    }
+    char a[1000],b[100],s[100][100];
+    int i,k=0,l,c=0,j=0,m,n;
     gets(a);
     scanf("%s",b);
-    m=strlen(a);
-    l=strlen(b);
-    for(i=0;i<m;i++)
+    l=strlen(a);
+    n=strlen(b);
+    for(i=0;i<l;i++)
     {
         if(a[i]!=' ')
         {
-            s[k]=a[i];
+            s[j][k]=a[i];
             k++;
         }
         if(a[i]==' ')
         {
-            for(j=0;j<k;j++)
+            j++;
+            for(m=0;m<k;m++)
             {
-                if(s[j]==b[j])
-                {
-                    c++;
-                }
+                s[i][m]='\0';
             }
-
-            if(c==l)
-            {
-                while(c>0)
-                {
-                    a[i-1]='$';
-                    i--;
-                    c--;
-                }
-                puts(a);
-            }
-            else
-            {
-                for(j=0;j<k;j++)
-                {
-                    s[j]='\0';
-                }
-                k=0;
-                c=0;
-            }
-        }
-    for(j=0;j<k;j++)
-    {
-        if(s[j]==b[j])
-        {
-        c++;
+            k=0;
         }
     }
-    if(c==l)
+    for(i=0;i<j+1;i++)
     {
-        while(c<0)
+        c=0;
+        l=strlen(s[i]);
+        if(l==n)
         {
-            a[i]='$';
-            i--;
-            c--;
+        for(k=0;k<l;k++)
+        {
+         if(s[i][k]==b[k])
+         {
+             c++;
+         }
         }
-    }
+        if(c!=l)
+        {
+            printf("%s ",s[i]);
+        }
+        }
+        else
+        {
+            printf("%s ",s[i]);
+        }
 }
-    k=0;
-    for(i=0;i<m;i++)
-    {
-        if(a[i]!='$')
-        {
-            a[k]=a[i];
-            k++;
-        }
+        return 0;
     }
-    puts(a);
-}
